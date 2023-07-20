@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('kategori', ['L', 'P']);
             $table->integer('penanggung_jawab');
             $table->integer('wasit');
+            $table->timestamps();
         });
     }
 

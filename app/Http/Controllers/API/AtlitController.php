@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AtlitResource;
 use App\Models\Atlit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class AtlitController extends Controller
 {
     public function index() {
-        $data = Atlit::with('products')->get();
+        $data = Atlit::with('team')->get();
+        // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
 
@@ -33,7 +36,7 @@ class AtlitController extends Controller
 
     public function store(Request $request) {
 
-        $validate = Atlit::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'umur' => 'required',
@@ -66,7 +69,7 @@ class AtlitController extends Controller
         }
 
         // proses validasi
-        $validate = Atlit::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'umur' => 'required',

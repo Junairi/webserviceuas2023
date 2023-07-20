@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->string('nik', 16);
             $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('jenis_wasit', 120);
             $table->integer('cabang_olahraga');
+            $table->timestamps();
         });
     }
 

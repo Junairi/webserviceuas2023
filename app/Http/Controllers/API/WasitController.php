@@ -5,12 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Wasit;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class WasitController extends Controller
 {
     public function index() {
         $data = Wasit::with('products')->get();
+        // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
 
@@ -33,7 +34,7 @@ class WasitController extends Controller
 
     public function store(Request $request) {
 
-        $validate = Wasit::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'nik' => 'required',
@@ -64,7 +65,7 @@ class WasitController extends Controller
         }
 
         // proses validasi
-        $validate = Wasit::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'nik' => 'required',

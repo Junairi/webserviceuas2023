@@ -16,4 +16,12 @@ class CabangOlahraga extends Model
         'penanggung_jawab',
         'wasit'
     ];
+
+    function penanggung_jawab() {
+        return $this->belongsTo(Wasit::class, 'penanggung_jawab', 'id');
+    }
+
+    function wasit() {
+        return $this->belongsTo(Wasit::class, 'penanggung_jawab', 'id');
+    }
 }

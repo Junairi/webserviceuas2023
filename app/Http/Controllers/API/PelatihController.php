@@ -5,11 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Pelatih;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PelatihController extends Controller
 {
     public function index() {
         $data = Pelatih::with('products')->get();
+        // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
 
@@ -32,7 +34,7 @@ class PelatihController extends Controller
 
     public function store(Request $request) {
 
-        $validate = Pelatih::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'umur' => 'required',
@@ -65,7 +67,7 @@ class PelatihController extends Controller
         }
 
         // proses validasi
-        $validate = Pelatih::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'alamat' => 'required',
             'umur' => 'required',

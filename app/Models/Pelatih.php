@@ -19,4 +19,12 @@ class Pelatih extends Model
         'cabang_olahraga',
         'team'
     ];
+
+    function cabang_olahraga() {
+        return $this->belongsTo(CabangOlahraga::class, 'cabang_olahraga', 'id');
+    }
+    
+    function team() {
+        return $this->belongsTo(Team::class, 'team', 'id');
+    }
 }

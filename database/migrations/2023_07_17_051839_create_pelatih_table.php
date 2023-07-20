@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('kontak', 255);
             $table->integer('cabang_olahraga');
             $table->integer('team');
+            $table->timestamps();
         });
     }
 

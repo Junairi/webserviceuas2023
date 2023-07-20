@@ -16,4 +16,8 @@ class Team extends Model
         'jumlah_pelatih',
         'kedua'
     ];
+
+    function ketua() {
+        return $this->belongsTo(Pelatih::class, 'ketua', 'id');
+    }
 }

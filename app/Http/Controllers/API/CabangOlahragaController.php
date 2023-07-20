@@ -5,11 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\CabangOlahraga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CabangOlahragaController extends Controller
 {
     public function index() {
         $data = CabangOlahraga::with('products')->get();
+        // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
 
@@ -32,7 +34,7 @@ class CabangOlahragaController extends Controller
 
     public function store(Request $request) {
 
-        $validate = CabangOlahraga::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'kategori' => 'required',
             'penanggung_jawab_id' => 'required',
@@ -63,7 +65,7 @@ class CabangOlahragaController extends Controller
         }
 
         // proses validasi
-        $validate = CabangOlahraga::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'kategori' => 'required',
             'penanggung_jawab_id' => 'required',

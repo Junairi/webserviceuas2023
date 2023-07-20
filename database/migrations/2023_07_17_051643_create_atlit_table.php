@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 255);
             $table->string('alamat', 255);
-            $table->integer('umur', 3);
+            $table->integer('umur');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->integer('cabang_olahraga');
             $table->integer('team');
+            $table->timestamps();
         });
     }
 

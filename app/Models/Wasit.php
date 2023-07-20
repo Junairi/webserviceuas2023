@@ -17,4 +17,8 @@ class Wasit extends Model
         'jenis_kelamin',
         'cabang_olahraga'
     ];
+
+    function cabang_olahraga() {
+        return $this->belongsTo(CabangOlahraga::class, 'cabang_olahraga', 'id');
+    }
 }

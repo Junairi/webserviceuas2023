@@ -5,11 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
     public function index() {
         $data = Team::with('products')->get();
+        // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
 
@@ -32,7 +34,7 @@ class TeamController extends Controller
 
     public function store(Request $request) {
 
-        $validate = Team::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'jumlah_atlit' => 'required',
             'jumlah_pelatih' => 'required',
@@ -63,7 +65,7 @@ class TeamController extends Controller
         }
 
         // proses validasi
-        $validate = Team::make($request->all(), [
+        $validate = Validator::make($request->all(), [
             'nama' => 'required',
             'jumlah_atlit' => 'required',
             'jumlah_pelatih' => 'required',

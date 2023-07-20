@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama', 255);
             $table->integer('jumlah_atlit');
             $table->integer('jumlah_pelatih');
+            $table->timestamps();
         });
     }
 
