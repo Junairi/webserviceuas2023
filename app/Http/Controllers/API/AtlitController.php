@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class AtlitController extends Controller
 {
     public function index() {
-        $data = Atlit::with('team')->get();
+        $data = Atlit::with('cabang_olahraga', 'team')->get();
         // $data = AtlitResource::collection($dataRaw);
         return response()->json($data, 200);
     }
